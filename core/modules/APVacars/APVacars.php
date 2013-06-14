@@ -80,7 +80,8 @@ class APVacars extends CodonModule
                                 $biddata->deptime,";",                      //7
                                 $biddata->arrtime,";",                      //8
                                 $biddata->registration,";",                 //9 
-                                $aircraftinfo->name,";"                     //10
+                                $aircraftinfo->name,";",                    //10
+                                $aircraftinfo->maxpax,";"                   //11
                                 
 
                                 ;                    
