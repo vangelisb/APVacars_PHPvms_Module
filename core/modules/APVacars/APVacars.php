@@ -42,6 +42,14 @@ class APVacars extends CodonModule
                                    
                     
                     break;
+                    
+                     case 'version':        
+                    {
+                        echo '1.0.0.1';
+                    }
+                                   
+                    
+                    break;
                  
                   case 'isadmin':  
                   $pilotid = PilotData::parsePilotID($this->get->pilotID);      
@@ -82,7 +90,6 @@ class APVacars extends CodonModule
                                 $biddata->registration,";",                 //9 
                                 $aircraftinfo->name,";",                    //10
                                 $aircraftinfo->maxpax,";"                   //11
-                                
 
                                 ;                    
                         }
@@ -203,24 +210,24 @@ class APVacars extends CodonModule
                     
                     $data = array(
                         'pilotid'            =>$pilotid,
-                        'code'                =>$code,
-                        'flightnum'            =>$flightnum,
+                        'code'               =>$code,
+                        'flightnum'          =>$flightnum,
                         'depicao'            =>$this->get->depICAO,
                         'arricao'            =>$this->get->arrICAO,
-                        'aircraft'            =>$ac->id,
-                        'flighttime'        =>$this->get->flightTime,
-                        'flighttype'        =>$this->get->flightType,
-                        'submitdate'        =>'UTC_TIMESTAMP()',
+                        'aircraft'           =>$ac->id,
+                        'flighttime'         =>$this->get->flightTime,
+                        'flighttype'         =>$this->get->flightType,
+                        'submitdate'         =>'UTC_TIMESTAMP()',
                         'comment'            =>$this->get->comments,
-                        'fuelused'            =>$this->get->fuelused,
+                        'fuelused'           =>$this->get->fuelused,
                         'route'              =>$this->get->route,
-                        'source'            =>'APVacars',
-                        'load'                =>$load,
-                        'landingrate'        =>$this->get->landing,
+                        'source'             =>'APVacars',
+                        'load'               =>$load,
+                        'landingrate'        =>$this->get->landingrate,
                         'log'                =>$this->get->log
                     );
                     
-                    #$this->log("File PIREP: \n".print_r($data, true), 'kacars');
+                    //$this->log("File PIREP: \n".print_r($data, true), 'APVacars');
                     $ret = ACARSData::FilePIREP($pilotid, $data);        
                     
                     if ($ret)
