@@ -45,7 +45,7 @@ class APVacars extends CodonModule
                     
                      case 'version':        
                     {
-                        echo '1.0.0.1';
+                        echo '1.0.0.2';
                     }
                                    
                     
@@ -244,7 +244,19 @@ class APVacars extends CodonModule
                     
                     break;               
     
+            case 'progressbar':    
+                $lat = $this->get->latitude;
+                $lon = $this->get->longitude;
 
+                # Get the distance remaining
+                $depapt = OperationsData::GetAirportInfo($this->get->depICAO);
+                $arrapt = OperationsData::GetAirportInfo($this->get->arrICAO);
+                $dist_remain = round(SchedulesData::distanceBetweenPoints(
+                $lat, $lon,    $arrapt->lat, $arrapt->lng));
+                $totaldistance = round(SchedulesData::distanceBetweenPoints($depapt->lat, $depapt->lng, $arrapt->lat, $arrapt->lng));
+                $percomplete = ABS(number_format(((($totaldistance - $dist_remain) / $totaldistance) * 100), 2));
+                echo $percomplete;            
+                break; 
 
 
 }
