@@ -3,8 +3,8 @@
  * phpVMS - Virtual Airline Administration Software
  * Copyright (c) 2008 Nabeel Shahzad
  * For more information, visit www.phpvms.net
- *	Forums: http://www.phpvms.net/forum
- *	Documentation: http://www.phpvms.net/docs
+ *    Forums: http://www.phpvms.net/forum
+ *    Documentation: http://www.phpvms.net/docs
  *
  * phpVMS is licenced under the following license:
  *   Creative Commons Attribution Non-commercial Share Alike (by-nc-sa)
@@ -43,9 +43,9 @@ class APVacars extends CodonModule
                     
                     break;
                     
-                     case 'version':        
+                     case 'moduleversion':        
                     {
-                        echo '1.0.0.2';
+                        echo '1.0.0.3';
                     }
                                    
                     
@@ -254,8 +254,21 @@ class APVacars extends CodonModule
                 $dist_remain = round(SchedulesData::distanceBetweenPoints(
                 $lat, $lon,    $arrapt->lat, $arrapt->lng));
                 $totaldistance = round(SchedulesData::distanceBetweenPoints($depapt->lat, $depapt->lng, $arrapt->lat, $arrapt->lng));
-                $percomplete = ABS(number_format(((($totaldistance - $dist_remain) / $totaldistance) * 100), 2));
-                echo $percomplete;            
+                 if ($totaldistance == 0)
+                    {
+                        
+                            echo '0';    
+                    }
+                    else
+                    {
+                       $percomplete = ABS(number_format(((($totaldistance - $dist_remain) / $totaldistance) * 100), 2));
+                        
+                    }
+                
+               
+
+               
+                        echo $percomplete;      
                 break; 
 
 
